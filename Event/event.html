@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event World</title>
+  
+  <style>
+    .contents {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid black;
+      padding: 15px;
+    }
+    
+    #generateButton {
+      margin-top: 5px;
+      margin-bottom: 15px;;
+    }
+  </style>
+</head>
+<body>
+<div class="contents" align="center" hidden>
+    <button id="incrementButton">Tekan Aku :)</button>
+    <h3>Kamu sudah menekan tombol di atas sebanyak <span id="count">0</span></h3>
+</div>
+ 
+<script>
+  function welcome() {
+    // Kode JavaScript kita
+    alert('Sim salabim kode html muncul!');
+    const contents = document.querySelector('.contents')
+    contents.removeAttribute('hidden')
+  }
+
+  function increment() {
+    const count = document.getElementById('count');
+    count.innerText++;
+
+    if(count.innerText == 7){
+        const hiddenMessage = document.createElement('h4');
+        hiddenMessage.innerText = 'Selamat anda mendapatkan hadiah tersembunyi';
+        const image = document.createElement('img');
+        image.setAttribute('src', 'https://i.ibb.co/0V49VRZ/catto.jpg');
+        const contents = document.querySelector('.contents');
+        contents.appendChild(hiddenMessage);
+        contents.appendChild(image);
+    }
+  }
+  // Menggunakan event handler biasa
+//   document.body.onload = welcome;
+//   document.getElementById('incrementButton').onclick = increment; 
+
+  window.addEventListener('load', welcome); // Menggunakan window karena addEventListener() tidak bisa menggunakan tag body
+  document.getElementById('incrementButton').addEventListener('click', increment);
+</script>
+</body>
+</html>
